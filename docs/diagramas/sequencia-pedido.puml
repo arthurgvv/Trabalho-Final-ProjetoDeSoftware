@@ -2,6 +2,12 @@
 title Finesse Sportz - Sequencia de Fechamento de Pedido
 
 skinparam shadowing false
+skinparam sequence {
+  ActivationBackgroundColor white
+  ActivationBorderColor #343A40
+  LifeLineBorderColor #6C757D
+  LifeLineBackgroundColor white
+}
 
 actor Cliente
 participant "Front-end" as Front
@@ -14,33 +20,73 @@ participant "Gateway de Pagamento" as Gateway
 database "PostgreSQL" as DB
 
 Cliente -> Front : seleciona camisa
+activate Front #white
 Cliente -> Front : informa tamanho, cor e personalizacao
 Front -> PedidoController : POST /api/pedidos
+activate PedidoController #white
 PedidoController -> PedidoService : criarPedido(dados)
+activate PedidoService #white
 PedidoService -> EstoqueService : validarDisponibilidade()
+activate EstoqueService #white
 EstoqueService -> DB : consultar estoque
+activate DB #white
 DB --> EstoqueService : quantidade disponivel
+deactivate DB
 EstoqueService --> PedidoService : estoque valido
+deactivate EstoqueService
 
 PedidoService -> CupomService : validarCupom()
+activate CupomService #white
 CupomService -> DB : consultar cupom
+activate DB #white
 DB --> CupomService : cupom valido ou invalido
+deactivate DB
 CupomService --> PedidoService : desconto calculado
+deactivate CupomService
 
 PedidoService -> EstoqueService : reservarEstoque()
+activate EstoqueService #white
 EstoqueService -> DB : atualizar reserva
+activate DB #white
+DB --> EstoqueService : reserva atualizada
+deactivate DB
+EstoqueService --> PedidoService : estoque reservado
+deactivate EstoqueService
 PedidoService -> DB : salvar pedido aguardando pagamento
+activate DB #white
+DB --> PedidoService : pedido salvo
+deactivate DB
 PedidoService --> PedidoController : pedido criado
+deactivate PedidoService
 PedidoController --> Front : dados para pagamento
+deactivate PedidoController
 
 Front -> PedidoController : POST /api/pedidos/{id}/pagamento
+activate PedidoController #white
 PedidoController -> PagamentoService : processarPagamento()
+activate PagamentoService #white
 PagamentoService -> Gateway : autorizar transacao
+activate Gateway #white
 Gateway --> PagamentoService : pagamento aprovado
+deactivate Gateway
 PagamentoService -> DB : salvar pagamento aprovado
+activate DB #white
+DB --> PagamentoService : pagamento salvo
+deactivate DB
 PagamentoService -> PedidoService : confirmarPedido()
+activate PedidoService #white
 PedidoService -> DB : atualizar status para PAGO
+activate DB #white
+DB --> PedidoService : status atualizado
+deactivate DB
+PedidoService --> PagamentoService : pedido confirmado
+deactivate PedidoService
+PagamentoService --> PedidoController : pagamento confirmado
+deactivate PagamentoService
 PedidoController --> Front : pedido confirmado
+deactivate PedidoController
 Front --> Cliente : exibe confirmacao
+deactivate Front
 
 @enduml
+

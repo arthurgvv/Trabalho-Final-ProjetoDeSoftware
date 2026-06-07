@@ -2,6 +2,12 @@
 title Finesse Sportz - Sequencia de Pedido e Pagamento
 
 skinparam shadowing false
+skinparam sequence {
+  ActivationBackgroundColor white
+  ActivationBorderColor #343A40
+  LifeLineBorderColor #6C757D
+  LifeLineBackgroundColor white
+}
 
 actor Cliente
 participant "Frontend" as Front
@@ -15,36 +21,77 @@ participant "Notification Service" as Notificacao
 database "PostgreSQL" as DB
 
 Cliente -> Front : seleciona camisa
+activate Front #white
 Cliente -> Front : informa tamanho, cor e personalizacao
 Front -> Gateway : POST /pedidos
+activate Gateway #white
 Gateway -> Pedidos : criarPedido(dados)
+activate Pedidos #white
 Pedidos -> Estoque : validarDisponibilidade()
+activate Estoque #white
 Estoque -> DB : consultar variacao
+activate DB #white
 DB --> Estoque : estoque disponivel
+deactivate DB
 Estoque --> Pedidos : disponibilidade confirmada
+deactivate Estoque
 
 Pedidos -> Cupom : validarCupom()
+activate Cupom #white
 Cupom -> DB : consultar cupom
+activate DB #white
 DB --> Cupom : cupom valido
+deactivate DB
 Cupom --> Pedidos : desconto calculado
+deactivate Cupom
 
 Pedidos -> Estoque : reservarEstoque()
+activate Estoque #white
 Estoque -> DB : atualizar reserva
+activate DB #white
+DB --> Estoque : reserva atualizada
+deactivate DB
+Estoque --> Pedidos : estoque reservado
+deactivate Estoque
 Pedidos -> DB : salvar pedido aguardando pagamento
+activate DB #white
+DB --> Pedidos : pedido salvo
+deactivate DB
 Pedidos --> Gateway : pedido criado
+deactivate Pedidos
 Gateway --> Front : dados do pedido
+deactivate Gateway
 
 Front -> Gateway : POST /pagamentos
+activate Gateway #white
 Gateway -> Pagamento : processarPagamento()
+activate Pagamento #white
 Pagamento -> GatewayPay : autorizar transacao
+activate GatewayPay #white
 GatewayPay --> Pagamento : pagamento aprovado
+deactivate GatewayPay
 Pagamento -> DB : salvar pagamento
+activate DB #white
+DB --> Pagamento : pagamento salvo
+deactivate DB
 Pagamento -> Pedidos : confirmarPedido()
+activate Pedidos #white
 Pedidos -> DB : atualizar status para PAGO
-Pedidos -> Notificacao : enviar confirmacao
+activate DB #white
+DB --> Pedidos : status atualizado
+deactivate DB
+Pedidos --> Pagamento : pedido confirmado
+deactivate Pedidos
+Pagamento -> Notificacao : enviar confirmacao
+activate Notificacao #white
 Notificacao --> Cliente : email de confirmacao
+deactivate Notificacao
+Pagamento --> Gateway : pagamento confirmado
+deactivate Pagamento
 Gateway --> Front : pedido confirmado
+deactivate Gateway
 Front --> Cliente : mostra sucesso
+deactivate Front
 
 @enduml
 
