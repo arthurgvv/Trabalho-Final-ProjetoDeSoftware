@@ -2,7 +2,7 @@
 
 Projeto: Finesse Sportz
 
-Este documento descreve as regras de negocio da empresa ficticia de camisas esportivas. As regras definem como o sistema deve se comportar para manter consistencia nas vendas, personalizacoes, estoque, pagamento e entrega.
+Este documento descreve as regras de negocio da Finesse Sportz, loja real de camisas esportivas do Arthur. As regras definem como o sistema deve se comportar para manter consistencia nas vendas, personalizacoes, estoque, pagamento e entrega.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Contexto
 
-A Finesse Sportz e uma empresa ficticia de camisas esportivas que vende produtos prontos e personalizados. O negocio possui grande variedade de modelos, tamanhos, cores, times e modalidades, o que torna o controle manual de estoque e pedidos sujeito a erros.
+A Finesse Sportz e uma loja real de camisas esportivas do Arthur, voltada para a venda de produtos prontos e personalizados. O negocio possui grande variedade de modelos, tamanhos, cores, times e modalidades, o que torna o controle manual de estoque e pedidos sujeito a erros.
 
 ## Problema Principal
 
@@ -39,4 +39,3 @@ Projetar um sistema web que centralize catalogo, personalizacao, pedidos, estoqu
 - Integracao real com transportadora.
 - Recomendacao inteligente por IA.
 - Implementacao completa do codigo-fonte.
-
