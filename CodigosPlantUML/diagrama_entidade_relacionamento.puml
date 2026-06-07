@@ -1,0 +1,94 @@
+@startuml
+title Finesse Sportz - Diagrama Entidade-Relacionamento
+
+hide circle
+skinparam shadowing false
+skinparam linetype ortho
+
+entity "usuarios" as usuarios {
+  * id : uuid <<PK>>
+  --
+  nome : varchar
+  email : varchar <<UK>>
+  senha_hash : varchar
+  perfil : varchar
+  ativo : boolean
+}
+
+entity "produtos" as produtos {
+  * id : uuid <<PK>>
+  --
+  nome : varchar
+  modalidade : varchar
+  time_nome : varchar
+  preco_base : decimal
+  ativo : boolean
+}
+
+entity "variacoes_produto" as variacoes {
+  * id : uuid <<PK>>
+  --
+  produto_id : uuid <<FK>>
+  sku : varchar <<UK>>
+  tamanho : varchar
+  cor : varchar
+  quantidade_estoque : integer
+}
+
+entity "pedidos" as pedidos {
+  * id : uuid <<PK>>
+  --
+  usuario_id : uuid <<FK>>
+  cupom_id : uuid <<FK>>
+  codigo : varchar <<UK>>
+  status : varchar
+  total : decimal
+}
+
+entity "itens_pedido" as itens {
+  * id : uuid <<PK>>
+  --
+  pedido_id : uuid <<FK>>
+  variacao_id : uuid <<FK>>
+  quantidade : integer
+  nome_personalizado : varchar
+  numero_personalizado : integer
+}
+
+entity "pagamentos" as pagamentos {
+  * id : uuid <<PK>>
+  --
+  pedido_id : uuid <<FK>>
+  forma : varchar
+  status : varchar
+  valor : decimal
+}
+
+entity "entregas" as entregas {
+  * id : uuid <<PK>>
+  --
+  pedido_id : uuid <<FK>>
+  cep : varchar
+  endereco : varchar
+  status : varchar
+}
+
+entity "cupons" as cupons {
+  * id : uuid <<PK>>
+  --
+  codigo : varchar <<UK>>
+  percentual : decimal
+  validade : date
+  ativo : boolean
+}
+
+usuarios ||--o{ pedidos
+produtos ||--o{ variacoes
+variacoes ||--o{ itens
+pedidos ||--|{ itens
+pedidos ||--|| pagamentos
+pedidos ||--|| entregas
+cupons ||--o{ pedidos
+
+@enduml
+

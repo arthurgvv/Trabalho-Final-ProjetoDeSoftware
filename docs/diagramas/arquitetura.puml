@@ -1,0 +1,59 @@
+@startuml
+title Finesse Sportz - Arquitetura Geral
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Cliente" as Cliente
+actor "Administrador" as Admin
+
+rectangle "Front-end Web\nReact + TypeScript + Vite" as Frontend
+
+rectangle "Back-end API\nSpring Boot" as Backend {
+  [Auth Controller] as AuthController
+  [Produto Controller] as ProdutoController
+  [Pedido Controller] as PedidoController
+  [Estoque Controller] as EstoqueController
+  [Relatorio Controller] as RelatorioController
+
+  [Auth Service] as AuthService
+  [Produto Service] as ProdutoService
+  [Pedido Service] as PedidoService
+  [Estoque Service] as EstoqueService
+  [Pagamento Service] as PagamentoService
+  [Relatorio Service] as RelatorioService
+
+  [Repositories JPA] as Repositories
+}
+
+database "PostgreSQL" as DB
+cloud "Gateway de Pagamento" as Gateway
+cloud "Servico de Entrega" as Entrega
+
+Cliente --> Frontend : usa catalogo e checkout
+Admin --> Frontend : usa painel administrativo
+Frontend --> AuthController : HTTPS / REST
+Frontend --> ProdutoController : HTTPS / REST
+Frontend --> PedidoController : HTTPS / REST
+Frontend --> EstoqueController : HTTPS / REST
+Frontend --> RelatorioController : HTTPS / REST
+
+AuthController --> AuthService
+ProdutoController --> ProdutoService
+PedidoController --> PedidoService
+EstoqueController --> EstoqueService
+RelatorioController --> RelatorioService
+
+ProdutoService --> Repositories
+PedidoService --> Repositories
+EstoqueService --> Repositories
+RelatorioService --> Repositories
+AuthService --> Repositories
+
+PedidoService --> PagamentoService
+PagamentoService --> Gateway : autoriza pagamento
+PedidoService --> Entrega : cria remessa
+Repositories --> DB
+
+@enduml

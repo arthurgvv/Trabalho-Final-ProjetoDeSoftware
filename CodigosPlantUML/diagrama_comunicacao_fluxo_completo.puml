@@ -1,0 +1,39 @@
+@startuml
+title Finesse Sportz - Comunicacao do Fluxo Completo
+
+skinparam shadowing false
+left to right direction
+
+object "1 Cliente" as Cliente
+object "2 Frontend Web" as Front
+object "3 API Gateway" as Gateway
+object "4 Catalogo Service" as Catalogo
+object "5 Estoque Service" as Estoque
+object "6 Pedidos Service" as Pedidos
+object "7 Pagamento Service" as Pagamento
+object "8 Gateway Externo" as GatewayPay
+object "9 Notification Service" as Notificacao
+database "10 PostgreSQL" as DB
+
+Cliente --> Front : 1. acessa catalogo
+Front --> Gateway : 2. requisita produtos
+Gateway --> Catalogo : 3. lista produtos
+Catalogo --> DB : 4. consulta catalogo
+Cliente --> Front : 5. escolhe tamanho/cor
+Front --> Gateway : 6. valida estoque
+Gateway --> Estoque : 7. consulta disponibilidade
+Estoque --> DB : 8. busca variacao
+Cliente --> Front : 9. finaliza pedido
+Front --> Gateway : 10. cria pedido
+Gateway --> Pedidos : 11. processa regras
+Pedidos --> Estoque : 12. reserva estoque
+Pedidos --> Pagamento : 13. solicita pagamento
+Pagamento --> GatewayPay : 14. autoriza transacao
+GatewayPay --> Pagamento : 15. retorna aprovado
+Pagamento --> Pedidos : 16. confirma pagamento
+Pedidos --> DB : 17. salva pedido pago
+Pedidos --> Notificacao : 18. solicita notificacao
+Notificacao --> Cliente : 19. envia confirmacao
+
+@enduml
+

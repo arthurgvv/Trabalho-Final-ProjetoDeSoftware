@@ -1,0 +1,115 @@
+@startuml
+title Finesse Sportz - Diagrama de Componentes
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam linetype ortho
+left to right direction
+
+package "Frontend" {
+  component "Catalogo UI" as CatalogoUI
+  component "Carrinho UI" as CarrinhoUI
+  component "Checkout UI" as CheckoutUI
+  component "Admin UI" as AdminUI
+}
+
+component "API Gateway" as APIGateway
+
+package "Auth Service" {
+  component "AuthController" as AuthController
+  component "AuthService" as AuthService
+  component "TokenProvider" as TokenProvider
+  component "UsuarioRepository" as UsuarioRepo
+}
+
+package "Catalogo Service" {
+  component "ProdutoController" as ProdutoController
+  component "ProdutoService" as ProdutoService
+  component "ProdutoRepository" as ProdutoRepo
+}
+
+package "Estoque Service" {
+  component "EstoqueController" as EstoqueController
+  component "EstoqueService" as EstoqueService
+  component "ReservaEstoqueService" as ReservaEstoque
+  component "EstoqueRepository" as EstoqueRepo
+}
+
+package "Pedidos Service" {
+  component "PedidoController" as PedidoController
+  component "PedidoService" as PedidoService
+  component "CupomService" as CupomService
+  component "PedidoRepository" as PedidoRepo
+}
+
+package "Pagamento Service" {
+  component "PagamentoController" as PagamentoController
+  component "PagamentoService" as PagamentoService
+  component "GatewayPagamentoClient" as GatewayClient
+}
+
+package "Notification Service" {
+  component "EmailService" as EmailService
+  component "PedidoNotificationListener" as PedidoListener
+}
+
+package "Relatorio Service" {
+  component "RelatorioController" as RelatorioController
+  component "RelatorioService" as RelatorioService
+}
+
+database "Auth DB" as AuthDB
+database "Catalogo DB" as CatalogoDB
+database "Estoque DB" as EstoqueDB
+database "Pedidos DB" as PedidosDB
+cloud "Gateway Externo" as GatewayExterno
+cloud "Email Externo" as EmailExterno
+
+CatalogoUI --> APIGateway
+CarrinhoUI --> APIGateway
+CheckoutUI --> APIGateway
+AdminUI --> APIGateway
+
+APIGateway --> AuthController
+APIGateway --> ProdutoController
+APIGateway --> EstoqueController
+APIGateway --> PedidoController
+APIGateway --> PagamentoController
+APIGateway --> RelatorioController
+
+AuthController --> AuthService
+AuthService --> TokenProvider
+AuthService --> UsuarioRepo
+UsuarioRepo --> AuthDB
+
+ProdutoController --> ProdutoService
+ProdutoService --> ProdutoRepo
+ProdutoRepo --> CatalogoDB
+
+EstoqueController --> EstoqueService
+EstoqueService --> ReservaEstoque
+EstoqueService --> EstoqueRepo
+EstoqueRepo --> EstoqueDB
+
+PedidoController --> PedidoService
+PedidoService --> CupomService
+PedidoService --> PedidoRepo
+PedidoService --> EstoqueService
+PedidoService --> PagamentoService
+PedidoRepo --> PedidosDB
+
+PagamentoController --> PagamentoService
+PagamentoService --> GatewayClient
+GatewayClient --> GatewayExterno
+
+PedidoService --> PedidoListener
+PedidoListener --> EmailService
+EmailService --> EmailExterno
+
+RelatorioController --> RelatorioService
+RelatorioService --> PedidosDB
+RelatorioService --> EstoqueDB
+RelatorioService --> CatalogoDB
+
+@enduml
+

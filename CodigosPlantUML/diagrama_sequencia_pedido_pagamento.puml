@@ -1,0 +1,50 @@
+@startuml
+title Finesse Sportz - Sequencia de Pedido e Pagamento
+
+skinparam shadowing false
+
+actor Cliente
+participant "Frontend" as Front
+participant "API Gateway" as Gateway
+participant "Pedidos Service" as Pedidos
+participant "Estoque Service" as Estoque
+participant "Cupom Service" as Cupom
+participant "Pagamento Service" as Pagamento
+participant "Gateway Externo" as GatewayPay
+participant "Notification Service" as Notificacao
+database "PostgreSQL" as DB
+
+Cliente -> Front : seleciona camisa
+Cliente -> Front : informa tamanho, cor e personalizacao
+Front -> Gateway : POST /pedidos
+Gateway -> Pedidos : criarPedido(dados)
+Pedidos -> Estoque : validarDisponibilidade()
+Estoque -> DB : consultar variacao
+DB --> Estoque : estoque disponivel
+Estoque --> Pedidos : disponibilidade confirmada
+
+Pedidos -> Cupom : validarCupom()
+Cupom -> DB : consultar cupom
+DB --> Cupom : cupom valido
+Cupom --> Pedidos : desconto calculado
+
+Pedidos -> Estoque : reservarEstoque()
+Estoque -> DB : atualizar reserva
+Pedidos -> DB : salvar pedido aguardando pagamento
+Pedidos --> Gateway : pedido criado
+Gateway --> Front : dados do pedido
+
+Front -> Gateway : POST /pagamentos
+Gateway -> Pagamento : processarPagamento()
+Pagamento -> GatewayPay : autorizar transacao
+GatewayPay --> Pagamento : pagamento aprovado
+Pagamento -> DB : salvar pagamento
+Pagamento -> Pedidos : confirmarPedido()
+Pedidos -> DB : atualizar status para PAGO
+Pedidos -> Notificacao : enviar confirmacao
+Notificacao --> Cliente : email de confirmacao
+Gateway --> Front : pedido confirmado
+Front --> Cliente : mostra sucesso
+
+@enduml
+

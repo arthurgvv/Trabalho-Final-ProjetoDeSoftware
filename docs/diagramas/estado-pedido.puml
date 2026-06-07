@@ -1,0 +1,26 @@
+@startuml
+title Finesse Sportz - Estados do Pedido
+
+skinparam shadowing false
+
+[*] --> Criado
+Criado --> AguardandoPagamento : finalizar carrinho
+AguardandoPagamento --> Pago : pagamento aprovado
+AguardandoPagamento --> PagamentoRecusado : pagamento recusado
+PagamentoRecusado --> AguardandoPagamento : tentar novamente
+PagamentoRecusado --> Cancelado : cancelar
+
+Pago --> EmProducao : possui personalizacao
+Pago --> Separado : sem personalizacao
+EmProducao --> Separado : producao concluida
+Separado --> Enviado : despacho realizado
+Enviado --> Entregue : entrega confirmada
+
+Criado --> Cancelado : cancelar pedido
+AguardandoPagamento --> Cancelado : cancelar pedido
+Pago --> Cancelado : cancelar antes da separacao
+
+Entregue --> [*]
+Cancelado --> [*]
+
+@enduml

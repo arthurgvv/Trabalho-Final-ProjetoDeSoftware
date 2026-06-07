@@ -1,0 +1,28 @@
+@startuml
+title Finesse Sportz - Atores e Stakeholders
+
+skinparam shadowing false
+left to right direction
+
+actor "Cliente" as Cliente
+actor "Administrador" as Admin
+actor "Gateway de Pagamento" as Gateway
+actor "Servico de Entrega" as Entrega
+actor "Sistema de Email" as Email
+
+rectangle "Finesse Sportz" {
+  Cliente --> (Comprar camisas)
+  Cliente --> (Personalizar camisa)
+  Cliente --> (Acompanhar pedido)
+
+  Admin --> (Gerenciar catalogo)
+  Admin --> (Gerenciar estoque)
+  Admin --> (Gerar relatorios)
+
+  Gateway --> (Confirmar pagamento)
+  Entrega --> (Atualizar entrega)
+  Email --> (Enviar notificacoes)
+}
+
+@enduml
+

@@ -1,0 +1,50 @@
+@startuml
+title Finesse Sportz - Diagrama de Implantacao
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+
+node "Usuario" {
+  artifact "Navegador Web" as Browser
+}
+
+cloud "Internet" as Internet
+
+node "Servidor Frontend\nVercel/Netlify" {
+  artifact "React SPA" as ReactSPA
+}
+
+node "Servidor Backend\nRender/Railway/VPS" {
+  component "API Gateway" as Gateway
+  component "Auth Service" as Auth
+  component "Catalogo Service" as Catalogo
+  component "Estoque Service" as Estoque
+  component "Pedidos Service" as Pedidos
+  component "Pagamento Service" as Pagamento
+  component "Notification Service" as Notificacao
+}
+
+database "PostgreSQL" as PostgreSQL
+cloud "Gateway de Pagamento" as GatewayPay
+cloud "Servico de Email" as Email
+
+Browser --> Internet
+Internet --> ReactSPA
+ReactSPA --> Gateway
+
+Gateway --> Auth
+Gateway --> Catalogo
+Gateway --> Estoque
+Gateway --> Pedidos
+Gateway --> Pagamento
+Gateway --> Notificacao
+
+Auth --> PostgreSQL
+Catalogo --> PostgreSQL
+Estoque --> PostgreSQL
+Pedidos --> PostgreSQL
+Pagamento --> GatewayPay
+Notificacao --> Email
+
+@enduml
+

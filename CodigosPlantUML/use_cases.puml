@@ -1,0 +1,54 @@
+@startuml
+title Finesse Sportz - Casos de Uso
+
+skinparam shadowing false
+left to right direction
+
+actor "Cliente" as Cliente
+actor "Administrador" as Admin
+actor "Gateway de Pagamento" as Gateway
+
+rectangle "Finesse Sportz" {
+  usecase "Cadastrar conta" as UC01
+  usecase "Fazer login" as UC02
+  usecase "Consultar catalogo" as UC03
+  usecase "Filtrar produtos" as UC04
+  usecase "Personalizar camisa" as UC05
+  usecase "Adicionar ao carrinho" as UC06
+  usecase "Aplicar cupom" as UC07
+  usecase "Finalizar pedido" as UC08
+  usecase "Realizar pagamento" as UC09
+  usecase "Acompanhar pedido" as UC10
+  usecase "Gerenciar produtos" as UC11
+  usecase "Gerenciar estoque" as UC12
+  usecase "Atualizar status" as UC13
+  usecase "Gerar relatorios" as UC14
+  usecase "Confirmar pagamento" as UC15
+}
+
+Cliente --> UC01
+Cliente --> UC02
+Cliente --> UC03
+Cliente --> UC04
+Cliente --> UC05
+Cliente --> UC06
+Cliente --> UC07
+Cliente --> UC08
+Cliente --> UC09
+Cliente --> UC10
+
+Admin --> UC02
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+
+Gateway --> UC15
+
+UC08 .> UC06 : include
+UC08 .> UC09 : include
+UC09 .> UC15 : include
+UC05 .> UC06 : extend
+
+@enduml
+

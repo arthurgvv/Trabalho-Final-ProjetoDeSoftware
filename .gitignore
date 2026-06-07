@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+target/
+dist/
+build/
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+
+# Sistema operacional
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+

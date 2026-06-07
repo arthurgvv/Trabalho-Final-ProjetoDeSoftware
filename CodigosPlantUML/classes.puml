@@ -1,0 +1,115 @@
+@startuml
+title Finesse Sportz - Diagrama de Classes
+
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  +id: UUID
+  +nome: String
+  +email: String
+  +senhaHash: String
+  +perfil: Perfil
+  +ativo: Boolean
+}
+
+class Cliente {
+  +telefone: String
+  +documento: String
+}
+
+class Produto {
+  +id: UUID
+  +nome: String
+  +descricao: String
+  +modalidade: String
+  +time: String
+  +precoBase: Decimal
+  +ativo: Boolean
+}
+
+class VariacaoProduto {
+  +id: UUID
+  +sku: String
+  +tamanho: String
+  +cor: String
+  +quantidadeEstoque: Integer
+  +estoqueMinimo: Integer
+}
+
+class Pedido {
+  +id: UUID
+  +codigo: String
+  +status: StatusPedido
+  +subtotal: Decimal
+  +desconto: Decimal
+  +frete: Decimal
+  +total: Decimal
+}
+
+class ItemPedido {
+  +id: UUID
+  +quantidade: Integer
+  +precoUnitario: Decimal
+  +totalItem: Decimal
+}
+
+class Personalizacao {
+  +nome: String
+  +numero: Integer
+  +valorAdicional: Decimal
+}
+
+class Pagamento {
+  +id: UUID
+  +forma: FormaPagamento
+  +status: StatusPagamento
+  +valor: Decimal
+  +transacaoExterna: String
+}
+
+class Entrega {
+  +id: UUID
+  +cep: String
+  +endereco: String
+  +codigoRastreio: String
+  +status: StatusEntrega
+}
+
+class Cupom {
+  +id: UUID
+  +codigo: String
+  +percentual: Decimal
+  +valorMinimo: Decimal
+  +validade: Date
+  +ativo: Boolean
+}
+
+enum Perfil {
+  CLIENTE
+  ADMIN
+}
+
+enum StatusPedido {
+  CRIADO
+  AGUARDANDO_PAGAMENTO
+  PAGO
+  EM_PRODUCAO
+  SEPARADO
+  ENVIADO
+  ENTREGUE
+  CANCELADO
+}
+
+Usuario <|-- Cliente
+Produto "1" o-- "1..*" VariacaoProduto
+Cliente "1" -- "0..*" Pedido
+Pedido "1" o-- "1..*" ItemPedido
+ItemPedido "1" --> "1" VariacaoProduto
+ItemPedido "0..1" o-- Personalizacao
+Pedido "0..1" --> Cupom
+Pedido "1" o-- "1" Pagamento
+Pedido "1" o-- "1" Entrega
+
+@enduml
+

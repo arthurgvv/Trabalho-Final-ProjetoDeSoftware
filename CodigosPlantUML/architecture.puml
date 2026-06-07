@@ -1,0 +1,56 @@
+@startuml
+title Finesse Sportz - Arquitetura Geral
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+left to right direction
+
+actor "Cliente" as Cliente
+actor "Administrador" as Admin
+
+rectangle "Frontend Web\nReact + TypeScript" as Frontend
+rectangle "API Gateway / BFF\nSpring Cloud Gateway" as Gateway
+
+package "Microsservicos" {
+  component "Auth Service" as Auth
+  component "Catalogo Service" as Catalogo
+  component "Estoque Service" as Estoque
+  component "Pedidos Service" as Pedidos
+  component "Pagamento Service" as Pagamento
+  component "Notification Service" as Notificacao
+  component "Relatorio Service" as Relatorio
+}
+
+database "PostgreSQL\nAuth DB" as AuthDB
+database "PostgreSQL\nCatalogo DB" as CatalogoDB
+database "PostgreSQL\nEstoque DB" as EstoqueDB
+database "PostgreSQL\nPedidos DB" as PedidosDB
+
+cloud "Gateway de Pagamento" as GatewayPay
+cloud "Servico de Email" as Email
+
+Cliente --> Frontend
+Admin --> Frontend
+Frontend --> Gateway
+
+Gateway --> Auth
+Gateway --> Catalogo
+Gateway --> Estoque
+Gateway --> Pedidos
+Gateway --> Relatorio
+
+Auth --> AuthDB
+Catalogo --> CatalogoDB
+Estoque --> EstoqueDB
+Pedidos --> PedidosDB
+Pedidos --> Estoque : reserva estoque
+Pedidos --> Pagamento : solicita pagamento
+Pedidos --> Notificacao : envia eventos
+Pagamento --> GatewayPay
+Notificacao --> Email
+Relatorio --> PedidosDB
+Relatorio --> EstoqueDB
+Relatorio --> CatalogoDB
+
+@enduml
+

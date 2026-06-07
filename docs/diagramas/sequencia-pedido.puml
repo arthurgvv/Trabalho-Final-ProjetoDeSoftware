@@ -1,0 +1,46 @@
+@startuml
+title Finesse Sportz - Sequencia de Fechamento de Pedido
+
+skinparam shadowing false
+
+actor Cliente
+participant "Front-end" as Front
+participant "PedidoController" as PedidoController
+participant "PedidoService" as PedidoService
+participant "EstoqueService" as EstoqueService
+participant "CupomService" as CupomService
+participant "PagamentoService" as PagamentoService
+participant "Gateway de Pagamento" as Gateway
+database "PostgreSQL" as DB
+
+Cliente -> Front : seleciona camisa
+Cliente -> Front : informa tamanho, cor e personalizacao
+Front -> PedidoController : POST /api/pedidos
+PedidoController -> PedidoService : criarPedido(dados)
+PedidoService -> EstoqueService : validarDisponibilidade()
+EstoqueService -> DB : consultar estoque
+DB --> EstoqueService : quantidade disponivel
+EstoqueService --> PedidoService : estoque valido
+
+PedidoService -> CupomService : validarCupom()
+CupomService -> DB : consultar cupom
+DB --> CupomService : cupom valido ou invalido
+CupomService --> PedidoService : desconto calculado
+
+PedidoService -> EstoqueService : reservarEstoque()
+EstoqueService -> DB : atualizar reserva
+PedidoService -> DB : salvar pedido aguardando pagamento
+PedidoService --> PedidoController : pedido criado
+PedidoController --> Front : dados para pagamento
+
+Front -> PedidoController : POST /api/pedidos/{id}/pagamento
+PedidoController -> PagamentoService : processarPagamento()
+PagamentoService -> Gateway : autorizar transacao
+Gateway --> PagamentoService : pagamento aprovado
+PagamentoService -> DB : salvar pagamento aprovado
+PagamentoService -> PedidoService : confirmarPedido()
+PedidoService -> DB : atualizar status para PAGO
+PedidoController --> Front : pedido confirmado
+Front --> Cliente : exibe confirmacao
+
+@enduml

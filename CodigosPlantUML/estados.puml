@@ -1,0 +1,39 @@
+@startuml
+title Finesse Sportz - Estados do Pedido
+
+skinparam shadowing false
+skinparam state {
+  BackgroundColor #E3F2FD
+  BorderColor #1565C0
+}
+
+[*] --> Criado
+
+Criado : carrinho fechado
+Criado --> AguardandoPagamento : iniciar pagamento
+
+AguardandoPagamento : estoque reservado
+AguardandoPagamento --> Pago : pagamento aprovado
+AguardandoPagamento --> PagamentoRecusado : pagamento recusado
+AguardandoPagamento --> Cancelado : cancelar
+
+PagamentoRecusado --> AguardandoPagamento : tentar novamente
+PagamentoRecusado --> Cancelado : desistir
+
+Pago --> EmProducao : item personalizado
+Pago --> Separado : item comum
+
+EmProducao : personalizacao em andamento
+EmProducao --> Separado : producao concluida
+
+Separado --> Enviado : despachar
+Enviado --> Entregue : confirmar entrega
+
+Pago --> Cancelado : cancelamento permitido
+Separado --> Cancelado : cancelamento administrativo
+
+Entregue --> [*]
+Cancelado --> [*]
+
+@enduml
+

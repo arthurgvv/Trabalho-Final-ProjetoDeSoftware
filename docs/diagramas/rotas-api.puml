@@ -1,0 +1,59 @@
+@startuml
+title Finesse Sportz - Mapa de Rotas da API
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+
+rectangle "API REST /api" {
+  folder "auth" {
+    [POST /auth/register]
+    [POST /auth/login]
+    [POST /auth/refresh]
+    [POST /auth/logout]
+  }
+
+  folder "produtos" {
+    [GET /produtos]
+    [GET /produtos/{id}]
+    [POST /produtos]
+    [PUT /produtos/{id}]
+    [PATCH /produtos/{id}/status]
+  }
+
+  folder "estoques" {
+    [GET /estoques]
+    [POST /produtos/{id}/variacoes]
+    [PUT /estoques/{variacaoId}]
+    [GET /estoques/baixo]
+  }
+
+  folder "pedidos" {
+    [POST /pedidos]
+    [GET /pedidos/meus]
+    [GET /pedidos/{id}]
+    [PATCH /pedidos/{id}/cancelar]
+    [PATCH /pedidos/{id}/status]
+  }
+
+  folder "pagamentos" {
+    [POST /pedidos/{id}/pagamento]
+    [POST /pagamentos/webhook]
+    [GET /pagamentos/{id}]
+  }
+
+  folder "cupons" {
+    [POST /cupons/validar]
+    [POST /cupons]
+    [PUT /cupons/{id}]
+    [PATCH /cupons/{id}/status]
+  }
+
+  folder "relatorios" {
+    [GET /relatorios/vendas]
+    [GET /relatorios/produtos-mais-vendidos]
+    [GET /relatorios/pedidos-pendentes]
+    [GET /relatorios/estoque-baixo]
+  }
+}
+
+@enduml
