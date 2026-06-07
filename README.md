@@ -553,9 +553,7 @@ git push origin feature/minha-feature
 
 ## Agradecimentos
 
-Agradeco ao professor pela proposta do trabalho e pelo template de documentacao, que ajudou a organizar o projeto de forma clara e profissional.
-
-Tambem deixo registrado o uso do projeto [trabalhoFinal_ProjetoDeSoftware](https://github.com/Davii13/trabalhoFinal_ProjetoDeSoftware/tree/main) como referencia de estrutura para esta entrega.
+Agradeco ao professor Aramuni pela proposta do trabalho e pelo template de documentacao, que ajudou a organizar o projeto de forma clara e profissional.
 
 ---
 
