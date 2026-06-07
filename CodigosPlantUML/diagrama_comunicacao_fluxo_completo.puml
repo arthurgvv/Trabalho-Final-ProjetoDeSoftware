@@ -13,7 +13,7 @@ object "6 Pedidos Service" as Pedidos
 object "7 Pagamento Service" as Pagamento
 object "8 Gateway Externo" as GatewayPay
 object "9 Notification Service" as Notificacao
-database "10 PostgreSQL" as DB
+object "10 PostgreSQL" as DB
 
 Cliente --> Front : 1. acessa catalogo
 Front --> Gateway : 2. requisita produtos
@@ -36,4 +36,3 @@ Pedidos --> Notificacao : 18. solicita notificacao
 Notificacao --> Cliente : 19. envia confirmacao
 
 @enduml
-
