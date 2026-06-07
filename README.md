@@ -1,6 +1,6 @@
 # Finesse Sportz - Sistema Web de Venda de Camisas Esportivas
 
-> Sistema web para venda, personalizacao e gestao de camisas esportivas da minha loja real, **Finesse Sportz**.
+> Sistema web para venda, gestao de camisas esportivas da minha loja, **Finesse Sportz**.
 
 <table>
   <tr>
@@ -514,7 +514,7 @@ Fluxos previstos:
 
 ---
 
-## Autores
+## Autor
 
 | 👤 Nome | 🖼️ Foto | GitHub | LinkedIn | Email |
 |--------|--------|--------|----------|-------|
