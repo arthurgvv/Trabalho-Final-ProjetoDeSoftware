@@ -518,7 +518,7 @@ Fluxos previstos:
 
 | 👤 Nome | 🖼️ Foto | GitHub | LinkedIn | Email |
 |--------|--------|--------|----------|-------|
-| Arthur Gonçalves Vieira | <img src="./docs/assets/profile.jpg" width="100px" style="border-radius:50%;"> | <a href="https://github.com/arthurgvv"><img src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=white"></a> | <a href="https://www.linkedin.com/in/arthur-goncalves-62b15232a/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a> | <a href="mailto:arthurgvkj@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a> |
+| Arthur Gonçalves | <img src="./docs/assets/profile.jpg" width="100px" style="border-radius:50%;"> | <a href="https://github.com/arthurgvv"><img src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=white"></a> | <a href="https://www.linkedin.com/in/arthur-goncalves-62b15232a/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a> | <a href="mailto:arthurgvkj@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a> |
 
 ---
 
@@ -570,4 +570,3 @@ Este projeto e distribuido sob a [Licenca MIT](./LICENSE).
 Projeto pronto para entrega.
 
 Documentacao, regras de negocio, requisitos, arquitetura, relatorio e diagramas PlantUML foram organizados no repositorio.
-

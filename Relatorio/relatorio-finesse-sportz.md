@@ -4,7 +4,7 @@
 
 - **Projeto**: Finesse Sportz
 - **Tema**: Sistema web para empresa de camisas esportivas
-- **Autor**: Arthur
+- **Autor**: Arthur Gonçalves
 - **Disciplina**: Projeto de Software
 
 ## 2. Resumo
@@ -49,4 +49,3 @@ Os diagramas principais estao na pasta `CodigosPlantUML`:
 ## 8. Conclusao
 
 O projeto apresenta uma visao completa para um sistema de e-commerce especializado em camisas esportivas, com regras de negocio coerentes e documentacao organizada para facilitar implementacao futura.
-
