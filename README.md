@@ -1,7 +1,7 @@
 # Finesse Sportz - Sistema Web de Venda de Camisas Esportivas
 
 [![Status](https://img.shields.io/badge/Status-Documentacao%20Completa-brightgreen)](#status-final)
-[![Versao](https://img.shields.io/badge/Versao-1.0-blue)](#informacoes-do-autor)
+[![Versao](https://img.shields.io/badge/Versao-2.0-blue)](#informacoes-do-autor)
 [![Diagramas](https://img.shields.io/badge/Diagramas-10-orange)](CodigosPlantUML)
 [![Licenca](https://img.shields.io/badge/Licenca-MIT-green)](LICENSE)
 
@@ -25,7 +25,7 @@ O projeto foi desenvolvido como trabalho final de **Projeto de Software**, com f
 - **Instituicao**: Trabalho Final - Projeto de Software
 - **Tema**: Empresa de camisas esportivas
 - **Sistema**: Finesse Sportz
-- **Versao Atual**: 1.0
+- **Versao Atual**: 2.0
 
 ---
 
