@@ -1,380 +1,190 @@
 # Finesse Sportz - Sistema Web de Venda de Camisas Esportivas
 
-> Sistema web para venda, personalizacao e gestao de camisas esportivas da minha loja real, **Finesse Sportz**.
+[![Status](https://img.shields.io/badge/Status-Documentacao%20Completa-brightgreen)](#status-final)
+[![Versao](https://img.shields.io/badge/Versao-1.0-blue)](#informacoes-do-autor)
+[![Diagramas](https://img.shields.io/badge/Diagramas-10-orange)](CodigosPlantUML)
+[![Licenca](https://img.shields.io/badge/Licenca-MIT-green)](LICENSE)
 
-<table>
-  <tr>
-    <td width="800px">
-      <div align="justify">
-        Este <strong>README.md</strong> apresenta a documentacao completa do projeto <strong>Finesse Sportz</strong>, desenvolvido como trabalho final de Projeto de Software. O objetivo do sistema e apoiar a venda de camisas esportivas, permitindo cadastro de produtos, controle de estoque por tamanho e cor, personalizacao de camisas, fechamento de pedidos, pagamento, acompanhamento de status e gestao administrativa. O projeto esta <strong>pronto para entrega</strong>, com requisitos, regras de negocio, arquitetura e diagramas UML organizados em PlantUML.
-      </div>
-    </td>
-    <td>
-      <div align="center">
-        <img src="./docs/assets/finessepreto.png" alt="Logo Finesse Sportz" width="180px"/>
-      </div>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <img src="./docs/assets/finessepreto.png" alt="Logo Finesse Sportz" width="320"/>
+</div>
 
 ---
 
-## Status do Projeto
+## Resumo do Projeto
 
-![Status](https://img.shields.io/badge/Status-Pronto-brightgreen?style=for-the-badge)
-![Versao](https://img.shields.io/badge/Versao-1.0.0-blue?style=for-the-badge)
-![Documentacao](https://img.shields.io/badge/Documentacao-Completa-success?style=for-the-badge)
-![PlantUML](https://img.shields.io/badge/PlantUML-10%20diagramas-orange?style=for-the-badge)
-![Java](https://img.shields.io/badge/Java-17-red?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Licenca](https://img.shields.io/badge/Licenca-MIT-green?style=for-the-badge)
+**Finesse Sportz** e um sistema web projetado para minha loja real de camisas esportivas. A solucao permite venda de camisas prontas, personalizacao com nome e numero, controle de estoque por variacao, processamento de pagamentos, acompanhamento de pedidos e administracao do catalogo.
 
-O projeto esta pronto como entrega academica de documentacao, modelagem e arquitetura. A proposta apresenta o sistema, as regras de negocio, os requisitos, a arquitetura e os principais diagramas UML.
+O projeto foi desenvolvido como trabalho final de **Projeto de Software**, com foco em regras de negocio, requisitos, arquitetura, fluxos de comunicacao e diagramas UML em PlantUML.
 
 ---
 
-## Indice
+## Informacoes do Autor
 
-- [Links Uteis](#links-uteis)
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades Principais](#funcionalidades-principais)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Arquitetura](#arquitetura)
-  - [Exemplos de Diagramas](#exemplos-de-diagramas)
-- [Instalacao e Execucao](#instalacao-e-execucao)
-  - [Pre-requisitos](#pre-requisitos)
-  - [Variaveis de Ambiente](#variaveis-de-ambiente)
-  - [Instalacao de Dependencias](#instalacao-de-dependencias)
-  - [Inicializacao do Banco de Dados PostgreSQL](#inicializacao-do-banco-de-dados-postgresql)
-  - [Como Executar a Aplicacao](#como-executar-a-aplicacao)
-- [Deploy](#deploy)
-- [Estrutura de Pastas](#estrutura-de-pastas)
-- [Demonstracao](#demonstracao)
-- [Testes](#testes)
-- [Documentacoes Utilizadas](#documentacoes-utilizadas)
-- [Autores](#autores)
-- [Contribuicao](#contribuicao)
-- [Agradecimentos](#agradecimentos)
-- [Licenca](#licenca)
+- **Autor**: Arthur Gonçalves
+- **Instituicao**: Trabalho Final - Projeto de Software
+- **Tema**: Empresa de camisas esportivas
+- **Sistema**: Finesse Sportz
+- **Versao Atual**: 1.0
 
 ---
 
-## Links Uteis
+## Problema e Escopo
 
-- **Repositorio do Projeto:** [Trabalho-Final-ProjetoDeSoftware](https://github.com/arthurgvv/Trabalho-Final-ProjetoDeSoftware)
-  > Repositorio GitHub contendo a documentacao, arquivos PlantUML, regras de negocio e relatorio do projeto.
-- **Documentacao do Professor:** [Template README](https://github.com/joaopauloaramuni/laboratorio-de-desenvolvimento-de-software/blob/main/TEMPLATES/template_README.md)
-  > Template usado como base para organizacao deste README.
-- **Referencia de Estrutura:** [trabalhoFinal_ProjetoDeSoftware](https://github.com/Davii13/trabalhoFinal_ProjetoDeSoftware/tree/main)
-  > Projeto usado como referencia de organizacao para a entrega final.
-- **PlantUML:** [https://plantuml.com](https://plantuml.com)
-  > Ferramenta utilizada para criar os diagramas UML do projeto.
-- **Regras de Negocio:** [docs/regras-de-negocio.md](./docs/regras-de-negocio.md)
-- **Requisitos:** [docs/requisitos.md](./docs/requisitos.md)
-- **Arquitetura:** [docs/arquitetura.md](./docs/arquitetura.md)
-- **Mapa de Endpoints:** [docs/api-endpoints.md](./docs/api-endpoints.md)
+### Enunciado do Problema
 
----
+Empresas que vendem camisas esportivas precisam lidar com produtos que possuem muitas variacoes, como tamanho, cor, time, modelo e disponibilidade em estoque. Alem disso, camisas personalizadas exigem controle especifico de producao, pagamento e cancelamento.
 
-## Sobre o Projeto
+O sistema deve resolver os seguintes pontos:
 
-O **Finesse Sportz** e um sistema web pensado para minha loja real de camisas esportivas. A ideia surgiu da necessidade de organizar melhor vendas, estoque, pedidos e personalizacoes, evitando processos manuais e reduzindo erros no atendimento ao cliente.
+1. **Controle de estoque** - evitar venda de tamanho, cor ou modelo indisponivel.
+2. **Personalizacao confiavel** - permitir nome e numero respeitando regras de negocio.
+3. **Pagamento seguro** - confirmar pedidos somente apos aprovacao.
+4. **Acompanhamento de pedido** - permitir que cliente acompanhe cada etapa.
+5. **Gestao administrativa** - permitir cadastro de produtos, variacoes, estoque, cupons e relatorios.
+6. **Documentacao clara** - apresentar arquitetura, requisitos e diagramas PlantUML.
 
-O sistema resolve problemas como:
+### Requisitos Principais
 
-- venda de produtos sem estoque disponivel;
-- dificuldade para controlar tamanho, cor e modelo;
-- falta de visibilidade sobre pedidos em andamento;
-- controle manual de camisas personalizadas;
-- ausencia de relatorios para acompanhar vendas e estoque;
-- dificuldade para aplicar cupons, descontos e regras de frete.
+#### Funcionais
 
-O projeto foi desenvolvido em contexto academico, mas representa uma necessidade real da loja Finesse Sportz. Ele pode ser usado como base para uma futura implementacao completa do sistema.
+- Clientes podem se cadastrar e fazer login.
+- Clientes podem consultar catalogo de camisas esportivas.
+- Clientes podem filtrar produtos por time, modalidade, tamanho, cor e preco.
+- Clientes podem personalizar camisa com nome e numero.
+- Clientes podem adicionar itens ao carrinho e finalizar pedido.
+- O sistema deve calcular desconto, frete, subtotal e total.
+- O sistema deve validar estoque antes da compra.
+- O sistema deve processar pagamento por gateway externo simulado.
+- Administradores podem gerenciar produtos, variacoes e estoque.
+- Administradores podem acompanhar pedidos e gerar relatorios.
 
----
+#### Nao Funcionais
 
-## Funcionalidades Principais
-
-- **Autenticacao Segura:** cadastro, login, controle de sessao e permissao por perfil.
-- **Catalogo de Produtos:** listagem de camisas esportivas com filtros por time, modalidade, tamanho, cor e preco.
-- **Personalizacao de Camisas:** cadastro de nome e numero na camisa, com regras de tamanho e valor adicional.
-- **Carrinho de Compras:** inclusao, edicao e remocao de itens antes do fechamento do pedido.
-- **Checkout:** calculo de subtotal, desconto, frete e total.
-- **Controle de Estoque:** verificacao de disponibilidade por produto, tamanho e cor.
-- **Pagamento:** integracao planejada com gateway externo de pagamento.
-- **Acompanhamento de Pedido:** status como aguardando pagamento, pago, em producao, enviado e entregue.
-- **Painel Administrativo:** gestao de produtos, variacoes, pedidos, estoque, cupons e relatorios.
-- **Relatorios:** acompanhamento de vendas, produtos mais vendidos, pedidos pendentes e estoque baixo.
-- **Notificacoes:** envio planejado de confirmacoes de pedido, pagamento e entrega.
+- O sistema deve ser responsivo para desktop e dispositivos moveis.
+- A API deve responder rapidamente em operacoes comuns.
+- As senhas devem ser armazenadas com hash seguro.
+- Rotas administrativas devem exigir permissao de administrador.
+- O sistema deve registrar logs de operacoes criticas.
+- O banco de dados deve manter integridade referencial.
+- Os diagramas devem ser criados com PlantUML.
 
 ---
 
-## Tecnologias Utilizadas
+## Arquitetura Geral
 
-As tecnologias abaixo representam a proposta tecnica para uma implementacao futura do sistema.
-
-### Front-end
-
-- **Framework/Biblioteca:** React 18
-- **Linguagem/Superset:** TypeScript
-- **Estilizacao:** Tailwind CSS
-- **Gerenciamento de Estado:** Context API ou Zustand
-- **Build Tool:** Vite
-- **Rotas:** React Router
-- **Cliente HTTP:** Axios
-
-### Back-end
-
-- **Linguagem/Runtime:** Java 17
-- **Framework:** Spring Boot 3.x
-- **Banco de Dados:** PostgreSQL 16
-- **ORM:** Spring Data JPA / Hibernate
-- **Autenticacao:** Spring Security + JWT
-- **Validacao:** Bean Validation
-
-### Mobile
-
-- Nao faz parte do escopo inicial.
-- Pode ser planejado futuramente com React Native ou Flutter.
-
-### Infraestrutura & DevOps
-
-- **Containerizacao:** Docker
-- **Orquestracao:** Docker Compose
-- **Cloud:** Render, Railway, Vercel ou VPS
-- **CI/CD:** GitHub Actions
-- **Documentacao:** Markdown + PlantUML
-- **Versionamento:** Git + GitHub
-
----
-
-## Arquitetura
-
-A arquitetura proposta segue uma abordagem distribuida, baseada em **API Gateway** e **microsservicos**. Essa escolha foi feita para separar responsabilidades, facilitar a manutencao e deixar claro o papel de cada parte do sistema.
-
-Principais componentes:
-
-- **Frontend Web:** interface para clientes e administradores.
-- **API Gateway / BFF:** entrada das requisicoes, autenticacao, logs e roteamento.
-- **Auth Service:** cadastro, login, perfis e tokens JWT.
-- **Catalogo Service:** produtos, times, modalidades e variacoes.
-- **Estoque Service:** disponibilidade, reserva e baixa de estoque.
-- **Pedidos Service:** carrinho, pedidos, status e cancelamentos.
-- **Pagamento Service:** comunicacao com gateway de pagamento.
-- **Notification Service:** notificacoes de pedido, pagamento e entrega.
-- **Relatorio Service:** indicadores administrativos.
-- **PostgreSQL:** persistencia relacional dos dados.
-
-Padroes adotados:
-
-- API Gateway
-- Service Layer
-- Repository
-- DTO
-- MVC
-- Autenticacao JWT
-- Webhook para retorno de pagamento
-
-### Exemplos de Diagramas
-
-Os diagramas principais estao organizados em PlantUML na pasta [CodigosPlantUML](./CodigosPlantUML).
-
-| Diagrama | Arquivo |
-| :---: | :--- |
-| **Atores** | [CodigosPlantUML/actors.puml](./CodigosPlantUML/actors.puml) |
-| **Casos de Uso** | [CodigosPlantUML/use_cases.puml](./CodigosPlantUML/use_cases.puml) |
-| **Arquitetura Geral** | [CodigosPlantUML/architecture.puml](./CodigosPlantUML/architecture.puml) |
-| **Componentes** | [CodigosPlantUML/components.puml](./CodigosPlantUML/components.puml) |
-| **Classes** | [CodigosPlantUML/classes.puml](./CodigosPlantUML/classes.puml) |
-| **Comunicacao do Fluxo Completo** | [CodigosPlantUML/diagrama_comunicacao_fluxo_completo.puml](./CodigosPlantUML/diagrama_comunicacao_fluxo_completo.puml) |
-| **Sequencia de Pedido e Pagamento** | [CodigosPlantUML/diagrama_sequencia_pedido_pagamento.puml](./CodigosPlantUML/diagrama_sequencia_pedido_pagamento.puml) |
-| **Estados do Pedido** | [CodigosPlantUML/estados.puml](./CodigosPlantUML/estados.puml) |
-| **Entidade-Relacionamento** | [CodigosPlantUML/diagrama_entidade_relacionamento.puml](./CodigosPlantUML/diagrama_entidade_relacionamento.puml) |
-| **Implantacao** | [CodigosPlantUML/implantacao.puml](./CodigosPlantUML/implantacao.puml) |
-
----
-
-## Instalacao e Execucao
-
-Como esta entrega tem foco em documentacao, modelagem e arquitetura, os comandos abaixo representam a proposta para uma implementacao futura da aplicacao.
-
-### Pre-requisitos
-
-- **Java JDK:** versao 17 ou superior.
-- **Node.js:** versao 18 ou superior.
-- **Gerenciador de Pacotes:** npm ou yarn.
-- **Docker:** recomendado para executar PostgreSQL localmente.
-- **PlantUML:** recomendado para visualizar os diagramas.
-
----
-
-### Variaveis de Ambiente
-
-Crie arquivos `.env` ou configure variaveis de ambiente para back-end e front-end.
-
-#### 1 Back-end (Spring Boot)
-
-| Variavel | Descricao | Exemplo |
-| :--- | :--- | :--- |
-| `SERVER_PORT` | Porta onde a API sera executada. | `8080` |
-| `SPRING_DATASOURCE_URL` | URL JDBC do PostgreSQL. | `jdbc:postgresql://localhost:5432/finesse_sportz` |
-| `SPRING_DATASOURCE_USERNAME` | Usuario do banco de dados. | `postgres` |
-| `SPRING_DATASOURCE_PASSWORD` | Senha do banco de dados. | `postgres` |
-| `JWT_SECRET` | Chave secreta para assinatura dos tokens. | `finesse-sportz-secret-key` |
-
-#### 2 Front-end (React, Vite)
-
-| Variavel | Descricao | Exemplo |
-| :--- | :--- | :--- |
-| `VITE_API_URL` | URL base da API. | `http://localhost:8080/api` |
-| `VITE_APP_NAME` | Nome da aplicacao. | `Finesse Sportz` |
-
-#### 3 Exemplos de Variaveis de Ambiente na Vercel
-
-```env
-VITE_API_URL=https://api.finessesportz.com/api
-VITE_APP_NAME=Finesse Sportz
-```
-
----
-
-### Instalacao de Dependencias
-
-Clone o repositorio:
-
-```bash
-git clone https://github.com/arthurgvv/Trabalho-Final-ProjetoDeSoftware.git
-cd Trabalho-Final-ProjetoDeSoftware
-```
-
-#### Front-end (React)
-
-```bash
-cd frontend
-npm install
-cd ..
-```
-
-#### Back-end (Spring Boot)
-
-```bash
-cd backend
-./mvnw clean install
-cd ..
-```
-
----
-
-### Inicializacao do Banco de Dados PostgreSQL
-
-Exemplo de execucao local com Docker:
-
-```bash
-docker run --name finesse_sportz_db \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=finesse_sportz \
-  -p 5432:5432 \
-  -d postgres:16
-```
-
-Caso o back-end utilize Flyway ou Hibernate, as tabelas podem ser criadas automaticamente na inicializacao da aplicacao.
-
----
-
-### Como Executar a Aplicacao
-
-#### Terminal 1: Back-end (Spring Boot)
-
-```bash
-cd backend
-./mvnw spring-boot:run
-```
-
-O back-end ficara disponivel em:
+A proposta segue uma arquitetura distribuida, baseada em API Gateway e microsservicos. Essa estrutura foi escolhida para separar melhor as responsabilidades do dominio e deixar a documentacao arquitetural mais clara.
 
 ```text
-http://localhost:8080
++------------------------------------------------------------+
+|                   Frontend Web - React SPA                 |
+|        Catalogo, carrinho, checkout e painel admin          |
++-----------------------------+------------------------------+
+                              |
+                              v
++------------------------------------------------------------+
+|                  API Gateway / BFF                         |
+|        Autenticacao, roteamento, seguranca e logs           |
++------+------------+-------------+-------------+------------+
+       |            |             |             |
+       v            v             v             v
++-------------+ +------------+ +------------+ +-------------+
+| Catalogo    | | Pedidos    | | Pagamento  | | Estoque     |
+| Service     | | Service    | | Service    | | Service     |
++------+------+ +-----+------+ +-----+------+ +------+------+
+       |              |              |               |
+       v              v              v               v
+   [DB Catalogo]  [DB Pedidos]  [Gateway Pay]   [DB Estoque]
+
++------------------------------------------------------------+
+|             Notification Service / Email Service           |
++------------------------------------------------------------+
 ```
 
-#### Terminal 2: Front-end (React, Vite)
+### Microsservicos
 
-```bash
-cd frontend
-npm run dev
-```
-
-O front-end ficara disponivel em:
-
-```text
-http://localhost:5173
-```
-
-#### Execucao Local Completa com Docker Compose
-
-```bash
-docker-compose up --build -d
-```
-
-Para parar os containers:
-
-```bash
-docker-compose down
-```
+| Servico | Responsabilidade | Tecnologia Proposta |
+|---|---|---|
+| **Auth Service** | Login, cadastro, perfis e tokens JWT. | Spring Boot + JWT |
+| **Catalogo Service** | Produtos, times, modalidades e variacoes. | Spring Boot + PostgreSQL |
+| **Estoque Service** | Quantidades, reservas e alertas de estoque baixo. | Spring Boot + PostgreSQL |
+| **Pedidos Service** | Carrinho, pedidos, status e regras de cancelamento. | Spring Boot + PostgreSQL |
+| **Pagamento Service** | Integracao com gateway de pagamento simulado. | Spring Boot + REST |
+| **Notification Service** | Confirmacoes de pedido, envio e cancelamento. | Spring Boot + Email |
+| **Relatorio Service** | Indicadores de vendas, produtos e estoque. | Spring Boot + PostgreSQL |
 
 ---
 
-## Deploy
+## Fluxo Principal: Pedido e Pagamento
 
-Proposta de deploy para uma versao futura:
+### 10 Fases Detalhadas
 
-1. Build do front-end:
+```text
+1. Autenticacao
+   Cliente faz login ou cadastro.
 
-```bash
-cd frontend
-npm run build
+2. Navegacao no Catalogo
+   Cliente consulta camisas e aplica filtros.
+
+3. Selecao da Camisa
+   Cliente escolhe produto, tamanho e cor.
+
+4. Personalizacao
+   Cliente informa nome e numero, se desejar.
+
+5. Verificacao de Estoque
+   Sistema valida disponibilidade da variacao.
+
+6. Criacao do Carrinho
+   Item e adicionado com preco base e acrescimos.
+
+7. Fechamento do Pedido
+   Sistema calcula subtotal, desconto, frete e total.
+
+8. Reserva de Estoque
+   Quantidade fica reservada durante o pagamento.
+
+9. Processamento de Pagamento
+   Gateway aprova ou recusa a transacao.
+
+10. Confirmacao e Producao
+    Pedido aprovado segue para separacao ou producao personalizada.
 ```
 
-2. Build do back-end:
+### Fluxo de Cancelamento
 
-```bash
-cd backend
-./mvnw clean package
-```
+O sistema tambem suporta cancelamento com regras especificas:
 
-3. Configurar variaveis de ambiente no provedor escolhido.
-
-4. Publicar:
-
-- Front-end em Vercel ou Netlify.
-- Back-end em Render, Railway ou VPS.
-- Banco PostgreSQL em Railway, Neon, Supabase ou Render.
+- pedido comum pode ser cancelado antes do envio;
+- pedido personalizado nao pode ser cancelado apos entrar em producao;
+- pagamento aprovado pode gerar estorno quando o cancelamento for permitido;
+- estoque reservado deve ser liberado quando o pedido for cancelado;
+- cliente deve ser notificado sobre o resultado.
 
 ---
 
-## Estrutura de Pastas
+## Estrutura do Repositorio
 
 ```text
-.
-|-- .gitignore
-|-- CONTRIBUTING.md
-|-- LICENSE
+Trabalho Final - Projeto de Software/
+|
 |-- README.md
+|-- LICENSE
+|-- CONTRIBUTING.md
+|-- .gitignore
 |
 |-- CodigosPlantUML/
 |   |-- README.md
 |   |-- actors.puml
+|   |-- use_cases.puml
 |   |-- architecture.puml
-|   |-- classes.puml
 |   |-- components.puml
+|   |-- classes.puml
 |   |-- diagrama_comunicacao_fluxo_completo.puml
-|   |-- diagrama_entidade_relacionamento.puml
 |   |-- diagrama_sequencia_pedido_pagamento.puml
 |   |-- estados.puml
-|   |-- implantacao.puml
-|   `-- use_cases.puml
+|   |-- diagrama_entidade_relacionamento.puml
+|   `-- implantacao.puml
 |
 |-- Problema/
 |   `-- problema-finesse-sportz.md
@@ -383,190 +193,253 @@ cd backend
 |   `-- relatorio-finesse-sportz.md
 |
 `-- docs/
-    |-- api-endpoints.md
-    |-- arquitetura.md
     |-- regras-de-negocio.md
     |-- requisitos.md
+    |-- arquitetura.md
+    |-- api-endpoints.md
     |-- assets/
-    |   |-- finessepreto.png
-    |   `-- profile.jpg
+    |   `-- finessepreto.png
     `-- diagramas/
-        |-- arquitetura.puml
-        |-- casos-de-uso.puml
-        |-- classes.puml
-        |-- estado-pedido.puml
-        |-- modelo-dados.puml
-        |-- rotas-api.puml
-        `-- sequencia-pedido.puml
 ```
 
 ---
 
-## Demonstracao
+## 10 Diagramas UML Completos
 
-A entrega atual e focada em documentacao e modelagem. As demonstracoes abaixo indicam as telas previstas para uma implementacao futura.
+### Diagramas de Analise
 
-### Aplicativo Mobile
+1. **Atores** (`actors.puml`) - usuarios, administradores e sistemas externos.
+2. **Casos de Uso** (`use_cases.puml`) - funcionalidades principais do sistema.
+3. **Fluxo de Comunicacao** (`diagrama_comunicacao_fluxo_completo.puml`) - interacoes entre atores e servicos.
 
-Nao faz parte do escopo inicial do projeto.
+### Diagramas de Projeto
 
-| Tela | Situacao |
-| :---: | :--- |
-| Aplicativo Mobile | Planejado apenas para versoes futuras. |
+4. **Arquitetura** (`architecture.puml`) - visao geral em camadas e servicos.
+5. **Componentes** (`components.puml`) - detalhamento dos microsservicos.
+6. **Classes** (`classes.puml`) - entidades principais do dominio.
+7. **Sequencia de Pedido** (`diagrama_sequencia_pedido_pagamento.puml`) - fluxo detalhado de compra.
+8. **Estados** (`estados.puml`) - maquina de estados do pedido.
 
-### Aplicacao Web
+### Diagramas de Implementacao
 
-| Tela | Descricao |
-| :---: | :--- |
-| **Home / Catalogo** | Listagem das camisas esportivas disponiveis. |
-| **Detalhe do Produto** | Visualizacao de modelo, tamanho, cor, preco e disponibilidade. |
-| **Personalizacao** | Insercao de nome e numero na camisa. |
-| **Carrinho** | Revisao dos itens antes do fechamento. |
-| **Checkout** | Calculo de frete, desconto e pagamento. |
-| **Painel Administrativo** | Gestao de produtos, estoque, pedidos e relatorios. |
+9. **Entidade-Relacionamento** (`diagrama_entidade_relacionamento.puml`) - modelo relacional proposto.
+10. **Implantacao** (`implantacao.puml`) - ambiente de deploy planejado.
 
-### Exemplo de Saida no Terminal (API)
+---
 
-Exemplo de consulta de produtos:
+## Tecnologias e Stack
 
-```bash
-curl -X GET "http://localhost:8080/api/produtos"
+### Backend
+
+```text
+Framework:      Spring Boot 3.x
+Linguagem:      Java 17
+Seguranca:      Spring Security + JWT
+Persistencia:   Spring Data JPA
+Validacao:      Bean Validation
 ```
 
-Saida esperada:
+### Frontend
 
-```json
-{
-  "total": 2,
-  "produtos": [
-    {
-      "id": "1",
-      "nome": "Camisa Brasil I 2024",
-      "tamanho": "M",
-      "cor": "Amarela",
-      "preco": 199.90,
-      "estoque": 12
-    },
-    {
-      "id": "2",
-      "nome": "Camisa Real Madrid Home",
-      "tamanho": "G",
-      "cor": "Branca",
-      "preco": 229.90,
-      "estoque": 8
-    }
-  ]
-}
+```text
+Web:            React 18
+Linguagem:      TypeScript
+Build:          Vite
+Estilo:         Tailwind CSS
+HTTP:           Axios
+Rotas:          React Router
+```
+
+### Banco de Dados
+
+```text
+Principal:      PostgreSQL 16
+Migracoes:      Flyway
+Modelo:         Relacional
+```
+
+### Comunicacao
+
+```text
+API:            REST
+Autenticacao:   Bearer Token JWT
+Eventos:        Mensageria simulada para notificacoes
+```
+
+### Infraestrutura
+
+```text
+Containers:     Docker
+Orquestracao:   Docker Compose
+Deploy:         Render, Railway ou VPS
+Versionamento:  Git + GitHub
 ```
 
 ---
 
-## Testes
+## Estatisticas do Projeto
 
-### Testes Unitarios e de Integracao
-
-Testes planejados para a implementacao:
-
-```bash
-npm run test
-```
-
-```bash
-./mvnw test
-```
-
-Itens que devem ser testados:
-
-- validacao de estoque;
-- calculo de total do pedido;
-- regra de personalizacao;
-- cupom de desconto;
-- transicao de status do pedido;
-- permissao de administrador.
-
-### Testes End-to-End (E2E)
-
-```bash
-npm run test:e2e
-```
-
-Fluxos previstos:
-
-- cliente compra camisa comum;
-- cliente compra camisa personalizada;
-- administrador cadastra produto;
-- administrador atualiza estoque;
-- cliente acompanha pedido.
+| Item | Quantidade |
+|---|---:|
+| Diagramas PlantUML principais | 10 |
+| Requisitos funcionais documentados | 17 |
+| Requisitos nao funcionais documentados | 8 |
+| Regras de negocio documentadas | 20 |
+| Microsservicos propostos | 7 |
+| Entidades principais | 10 |
 
 ---
 
-## Documentacoes Utilizadas
+## Diagramas Principais
 
-- **Template README:** [template_README.md](https://github.com/joaopauloaramuni/laboratorio-de-desenvolvimento-de-software/blob/main/TEMPLATES/template_README.md)
-- **Referencia de Projeto:** [trabalhoFinal_ProjetoDeSoftware](https://github.com/Davii13/trabalhoFinal_ProjetoDeSoftware/tree/main)
-- **PlantUML:** [Documentacao Oficial](https://plantuml.com)
-- **React:** [Documentacao Oficial](https://react.dev)
-- **Vite:** [Documentacao Oficial](https://vitejs.dev)
-- **Spring Boot:** [Documentacao Oficial](https://spring.io/projects/spring-boot)
-- **PostgreSQL:** [Documentacao Oficial](https://www.postgresql.org/docs)
-- **Docker:** [Documentacao Oficial](https://docs.docker.com)
-- **Conventional Commits:** [Guia Oficial](https://www.conventionalcommits.org/en/v1.0.0/)
+### 1. Diagrama de Componentes
 
----
+Arquivo: [CodigosPlantUML/components.puml](./CodigosPlantUML/components.puml)
 
-## Autores
+Mostra os modulos internos de cada microsservico, como controllers, services, repositories e integracoes.
 
-| 👤 Nome | 🖼️ Foto | GitHub | LinkedIn | Email |
-|--------|--------|--------|----------|-------|
-| Arthur Gonçalves | <img src="./docs/assets/profile.jpg" width="100px" style="border-radius:50%;"> | <a href="https://github.com/arthurgvv"><img src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=white"></a> | <a href="https://www.linkedin.com/in/arthur-goncalves-62b15232a/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a> | <a href="mailto:arthurgvkj@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a> |
+### 2. Diagrama de Implantacao
 
----
+Arquivo: [CodigosPlantUML/implantacao.puml](./CodigosPlantUML/implantacao.puml)
 
-## Contribuicao
+Mostra uma proposta de deploy com frontend, API Gateway, backend, banco de dados e gateway de pagamento.
 
-Como este projeto e uma entrega academica individual, contribuicoes externas nao fazem parte do escopo principal. Ainda assim, a estrutura segue boas praticas de versionamento.
+### 3. Diagrama de Comunicacao
 
-Para contribuicoes futuras:
+Arquivo: [CodigosPlantUML/diagrama_comunicacao_fluxo_completo.puml](./CodigosPlantUML/diagrama_comunicacao_fluxo_completo.puml)
 
-1. Faca um `fork` do projeto.
-2. Crie uma branch para sua feature:
+Mostra como cliente, frontend, gateway, servicos e banco interagem durante o processo de compra.
 
-```bash
-git checkout -b feature/minha-feature
-```
+### 4. Diagrama de Estados
 
-3. Commit suas mudancas usando Conventional Commits:
+Arquivo: [CodigosPlantUML/estados.puml](./CodigosPlantUML/estados.puml)
 
-```bash
-git commit -m "feat: adiciona nova funcionalidade"
-```
-
-4. Envie a branch:
-
-```bash
-git push origin feature/minha-feature
-```
-
-5. Abra um Pull Request.
+Mostra os estados possiveis de um pedido, desde a criacao ate entrega ou cancelamento.
 
 ---
 
-## Agradecimentos
+## Padroes de Design Implementados
 
-Agradeco ao professor pela proposta do trabalho e pelo template de documentacao, que ajudou a organizar o projeto de forma clara e profissional.
+### Arquiteturais
 
-Tambem deixo registrado o uso do projeto [trabalhoFinal_ProjetoDeSoftware](https://github.com/Davii13/trabalhoFinal_ProjetoDeSoftware/tree/main) como referencia de estrutura para esta entrega.
+- API Gateway para centralizar entrada das requisicoes.
+- Service Layer para concentrar regras de negocio.
+- Repository para isolar acesso a dados.
+- DTO para entrada e saida de dados na API.
+
+### Comunicacao
+
+- REST para comunicacao sincrona.
+- Webhook para retorno do gateway de pagamento.
+- Eventos simulados para notificacoes.
+
+### Dados
+
+- Modelo relacional para pedidos, produtos, pagamentos e estoque.
+- Controle de integridade por chaves estrangeiras.
+- Separacao de entidades por contexto de negocio.
+
+### Seguranca
+
+- Autenticacao JWT.
+- Controle de perfil Cliente/Admin.
+- Hash de senha.
+- Protecao de rotas administrativas.
+
+---
+
+## Como Usar Este Repositorio
+
+### Para Desenvolvedores
+
+1. Ler o README.
+2. Consultar os requisitos em [docs/requisitos.md](./docs/requisitos.md).
+3. Consultar as regras em [docs/regras-de-negocio.md](./docs/regras-de-negocio.md).
+4. Usar os diagramas PlantUML como guia de implementacao.
+
+### Para Analise de Requisitos
+
+1. Comecar pelo arquivo [Problema/problema-finesse-sportz.md](./Problema/problema-finesse-sportz.md).
+2. Conferir requisitos funcionais e nao funcionais.
+3. Validar regras de negocio.
+4. Revisar casos de uso.
+
+### Para Arquitetura
+
+1. Abrir [CodigosPlantUML/architecture.puml](./CodigosPlantUML/architecture.puml).
+2. Abrir [CodigosPlantUML/components.puml](./CodigosPlantUML/components.puml).
+3. Conferir o relatorio em [Relatorio/relatorio-finesse-sportz.md](./Relatorio/relatorio-finesse-sportz.md).
+
+---
+
+## Checklist de Conformidade
+
+### Requisitos Funcionais
+
+- [x] Cadastro e login de clientes.
+- [x] Catalogo de produtos.
+- [x] Personalizacao de camisas.
+- [x] Carrinho e pedido.
+- [x] Pagamento.
+- [x] Controle de estoque.
+- [x] Painel administrativo.
+- [x] Relatorios.
+
+### Requisitos Nao Funcionais
+
+- [x] Seguranca.
+- [x] Responsividade.
+- [x] Integridade dos dados.
+- [x] Documentacao.
+- [x] Arquitetura definida.
+- [x] Diagramas PlantUML.
+
+### Qualidade do Projeto
+
+- [x] Problema documentado.
+- [x] Escopo definido.
+- [x] Regras de negocio listadas.
+- [x] Diagramas organizados.
+- [x] Estrutura organizada para apresentacao academica.
+
+---
+
+## Proximos Passos
+
+1. Revisar dados do autor e contato.
+2. Gerar imagens PNG dos diagramas PlantUML, se necessario.
+3. Transformar o relatorio Markdown em PDF ou DOCX, se o professor exigir.
+4. Ajustar regras de negocio conforme feedback.
+5. Criar prototipo de telas, caso a entrega peca demonstracao visual.
+
+---
+
+## Documentacao Adicional
+
+- [Regras de Negocio](./docs/regras-de-negocio.md)
+- [Requisitos](./docs/requisitos.md)
+- [Arquitetura](./docs/arquitetura.md)
+- [Mapa de Endpoints](./docs/api-endpoints.md)
+- [Codigos PlantUML](./CodigosPlantUML)
+- [Problema](./Problema/problema-finesse-sportz.md)
+- [Relatorio](./Relatorio/relatorio-finesse-sportz.md)
+
+---
+
+## Contato
+
+- **Autor**: Arthur Gonçalves
+- **Projeto**: Finesse Sportz
+- **Finalidade**: Trabalho Final de Projeto de Software
 
 ---
 
 ## Licenca
 
-Este projeto e distribuido sob a [Licenca MIT](./LICENSE).
+Este projeto academico esta disponivel sob a licenca MIT.
 
 ---
 
 ## Status Final
 
-Projeto pronto para entrega.
-
-Documentacao, regras de negocio, requisitos, arquitetura, relatorio e diagramas PlantUML foram organizados no repositorio.
+Projeto pronto para entrega, com documentacao, regras de negocio, requisitos, arquitetura, relatorio e diagramas PlantUML organizados no repositorio.

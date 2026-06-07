@@ -6,7 +6,7 @@ Projeto: Finesse Sportz
 
 ## Visao Geral
 
-A arquitetura proposta para o Finesse Sportz usa uma estrutura distribuida baseada em API Gateway e microsservicos. Essa decisao foi adotada para organizar melhor as responsabilidades do sistema e seguir a estrutura do trabalho de referencia usado como base.
+A arquitetura proposta para o Finesse Sportz usa uma estrutura distribuida baseada em API Gateway e microsservicos. Essa decisao foi adotada para organizar melhor as responsabilidades do sistema e separar de forma clara os principais contextos do negocio.
 
 O sistema e dividido em:
 
@@ -128,4 +128,3 @@ Gera indicadores administrativos, como produtos mais vendidos, pedidos pendentes
 - A integracao com pagamento e entrega pode ser simulada.
 - Nao ha previsao inicial de aplicativo mobile nativo.
 - Recomendacao de produtos pode ficar para versoes futuras.
-
