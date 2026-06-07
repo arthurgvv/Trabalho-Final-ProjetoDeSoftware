@@ -2,7 +2,7 @@
 
 ## Contexto
 
-A Finesse Sportz e uma loja real de camisas esportivas do Arthur, voltada para a venda de produtos prontos e personalizados. O negocio possui grande variedade de modelos, tamanhos, cores, times e modalidades, o que torna o controle manual de estoque e pedidos sujeito a erros.
+A Finesse Sportz e minha loja real de camisas esportivas, voltada para a venda de produtos prontos e personalizados. O negocio possui grande variedade de modelos, tamanhos, cores, times e modalidades, o que torna o controle manual de estoque e pedidos sujeito a erros.
 
 ## Problema Principal
 

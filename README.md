@@ -13,7 +13,7 @@
 
 ## Resumo do Projeto
 
-**Finesse Sportz** e um sistema web projetado para a loja real Finesse Sportz, empresa de camisas esportivas do Arthur. A solucao permite venda de camisas prontas, personalizacao com nome e numero, controle de estoque por variacao, processamento de pagamentos, acompanhamento de pedidos e administracao do catalogo.
+**Finesse Sportz** e um sistema web projetado para minha loja real de camisas esportivas. A solucao permite venda de camisas prontas, personalizacao com nome e numero, controle de estoque por variacao, processamento de pagamentos, acompanhamento de pedidos e administracao do catalogo.
 
 O projeto foi desenvolvido como trabalho final de **Projeto de Software**, com foco em regras de negocio, requisitos, arquitetura, fluxos de comunicacao e diagramas UML em PlantUML.
 
