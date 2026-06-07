@@ -426,7 +426,7 @@ Mostra os estados possiveis de um pedido, desde a criacao ate entrega ou cancela
 
 ---
 
-## 👤 Autor
+##  Autor
 
 | 👤 Nome | 🖼️ Foto | GitHub | LinkedIn | Email |
 |--------|--------|--------|----------|-------|
