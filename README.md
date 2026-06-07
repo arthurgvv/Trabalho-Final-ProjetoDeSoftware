@@ -1,4 +1,4 @@
-# Finesse Sportz - Sistema Web de Venda e Personalizacao de Camisas Esportivas
+# Finesse Sportz - Sistema Web de Venda de Camisas Esportivas
 
 [![Status](https://img.shields.io/badge/Status-Documentacao%20Completa-brightgreen)](#status-final)
 [![Versao](https://img.shields.io/badge/Versao-1.0-blue)](#informacoes-do-autor)
